@@ -23,6 +23,7 @@ subfolders = {
     'Databases': ['.sql', '.json'],
     'Executables': ['.dmg'],
     'Archives': ['.zip', '.rar'],
+    'Python': ['.py'],
 }
 
 formats_in_files = {
@@ -40,8 +41,8 @@ def organizer():
     
         file_folder_path = Path(file_folder_entry.name)
         file_format = file_folder_path.suffix.lower()
-        if file_format in subfolders:
-            directory_path = Path(subfolders[file_format])
+        if file_format in formats_in_files:
+            directory_path = Path(formats_in_files[file_format])
             directory_path.mkdir(exist_ok=True)
             file_folder_path.rename(directory_path.joinpath(file_folder_path))
     
